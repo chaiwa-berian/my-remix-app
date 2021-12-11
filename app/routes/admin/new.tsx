@@ -43,7 +43,6 @@ export const action: ActionFunction = async ({ request }) => {
 export default function NewPost() {
   const errors = useActionData();
   const transition = useTransition();
-  console.log("Chaiwa, what is transition?", transition);
 
   return (
     <Form method="post">

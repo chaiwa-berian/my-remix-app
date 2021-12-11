@@ -7,7 +7,7 @@ import { marked } from "marked";
 export type Post = {
   slug: string;
   title: string;
-  markdown: string
+  markdown: string;
 };
 
 export type PostMarkdownAttributes = {
@@ -57,4 +57,9 @@ export async function createPost(post: Post) {
   const md = `---\ntitle: ${post.title}\n---\n\n${post.markdown}`;
   await fs.writeFile(path.join(postsPath, post.slug + ".md"), md);
   return getPost(post.slug);
+}
+
+export async function deletePost(slug: string) {
+  const res = await fs.rm(path.join(postsPath, slug + ".md"));
+  return res;
 }
